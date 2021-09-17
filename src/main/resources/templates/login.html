@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Login</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KyZXEAg3QhqLMpG8r+8fhAXLRk2vvoC2f3B09zVXn8CA5QIVfZOJ3BCsw2P0p/We" crossorigin="anonymous">
+</head>
+<body>
+
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <div class="container">
+            <a class="navbar-brand" href="/templates/registration.html" th:href="@{/registration}">Register</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav">
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="/templates/home.html" th:href="@{/home}">Home</a>
+                    </li>
+                </ul>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6 col-md-offset-3">
+                <h1>User Login Page</h1>
+                <form th:action="@{/login}" method="post">
+
+                    <!--login message-->
+                    <div th:if="${param.error}">
+                        <div class="aler alert-danger"> Invalid username or password.</div>
+                    </div>
+                    <!--logout message-->
+                    <div th:if="${param.logout}">
+                        <div class="alert alert-info"> You have been logged out.</div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="username"> Email</label>
+                        <input type="text" class="form-control" id="username" name="username" placeholder="Enter your email" autofocus="autofocus">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="password"> Password</label>
+                        <input type="password" class="form-control" id="password" name="password" placeholder="Enter Password">
+                    </div>
+
+                    <div class="form-group">
+                        <div class="row">
+                            <div class="col-sm-6 col-sm-offset-3">
+                                <input type="submit" name="login-submit" id="login-submit"
+                                class="form-control btn btn-primary" value="Log In"/>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+                <div class="form-group">
+                    <span>New User? <a href="/" th:href="@{/registration}">Click to Register</a></span>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
